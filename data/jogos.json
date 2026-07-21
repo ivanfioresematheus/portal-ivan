@@ -1,1 +1,17 @@
-{}
+{
+  "ultimoJogo": {
+    "competicao": "Brasileirão Série B",
+    "casa": "Botafogo-SP",
+    "visitante": "Ponte Preta",
+    "placarCasa": 1,
+    "placarVisitante": 1,
+    "golsIvan": 1,
+    "assistenciasIvan": 0
+  },
+  "proximoJogo": {
+    "competicao": "Brasileirão Série B",
+    "casa": "Ceará",
+    "visitante": "Botafogo-SP",
+    "data": "A definir"
+  }
+}
