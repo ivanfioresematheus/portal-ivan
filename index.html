@@ -2,305 +2,228 @@
 <html lang="pt-BR">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Ivan</title>
 
-<title>Portal Ivan</title>
+  <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header class="header">
 
-<div class="logo">
-
-<h1>PORTAL IVAN</h1>
-
-<p>O Portal Oficial da Carreira</p>
-
-</div>
+  <div class="logo">
+    <h1>PORTAL IVAN</h1>
+    <p>Carreira do Camisa 8</p>
+  </div>
 
 </header>
 
 <section class="hero">
 
-<div class="hero-info">
+  <img src="img/jogador/ivan.png" class="jogador" alt="Ivan">
 
-<img src="img/jogador/ivan.png" class="jogador" alt="Ivan">
+  <div class="hero-text">
 
-<div class="hero-text">
+    <span class="categoria">
+      DESTAQUE
+    </span>
 
-<span class="categoria">
-DESTAQUE
-</span>
+    <h2>IVAN</h2>
 
-<h2>
-IVAN
-</h2>
+    <h3>MEIA-ATACANTE • BOTAFOGO-SP</h3>
 
-<h3>
-MEIA-ATACANTE • BOTAFOGO-SP
-</h3>
+    <p>
+      Aos 17 anos, o camisa 8 soma 7 gols em 10 jogos
+      e vive grande fase na Série B.
+    </p>
 
-<p>
-Aos 17 anos, o camisa 8 já marcou 7 gols em apenas 10 partidas pela Série B.
-</p>
+    <a href="pages/jogador.html" class="btn">
+      VER PERFIL
+    </a>
 
-<a href="pages/jogador.html" class="btn">
-VER PERFIL
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 <section class="stats">
 
-<h2>ESTATÍSTICAS</h2>
+  <h2>ESTATÍSTICAS</h2>
 
-<div class="grid">
+  <div class="grid">
 
-<div class="card">
+    <div class="card">
+      <h3 id="jogos">10</h3>
+      <p>Jogos</p>
+    </div>
 
-<h3 id="jogos">10</h3>
+    <div class="card">
+      <h3 id="gols">7</h3>
+      <p>Gols</p>
+    </div>
 
-<p>Jogos</p>
+    <div class="card">
+      <h3 id="assistencias">0</h3>
+      <p>Assistências</p>
+    </div>
 
-</div>
+    <div class="card">
+      <h3 id="valor">US$ 800 mil</h3>
+      <p>Valor de Mercado</p>
+    </div>
 
-<div class="card">
-
-<h3 id="gols">7</h3>
-
-<p>Gols</p>
-
-</div>
-
-<div class="card">
-
-<h3 id="assistencias">0</h3>
-
-<p>Assistências</p>
-
-</div>
-
-<div class="card">
-
-<h3 id="valor">US$ 800 mil</h3>
-
-<p>Valor de Mercado</p>
-
-</div>
-
-</div>
+  </div>
 
 </section><section class="partidas">
 
-<h2>CENTRAL DE PARTIDAS</h2>
+  <h2>CENTRAL DE PARTIDAS</h2>
 
-<div class="jogo">
+  <div class="jogo">
 
-<div class="jogo-topo">
+    <span class="tag">
+      ÚLTIMO JOGO
+    </span>
 
-<span class="tag">
-ÚLTIMO JOGO
-</span>
+    <h3 id="ultimoJogo">
+      Botafogo-SP 1 x 1 Ponte Preta
+    </h3>
 
-</div>
+    <p>
+      Brasileirão Série B
+    </p>
 
-<h3>
-Botafogo-SP 1 x 1 Ponte Preta
-</h3>
+  </div>
 
-<p>
-Brasileirão Série B
-</p>
+  <div class="jogo">
 
-</div>
+    <span class="tag vermelho">
+      PRÓXIMO JOGO
+    </span>
 
-<div class="jogo">
+    <h3 id="proximoJogo">
+      Ceará x Botafogo-SP
+    </h3>
 
-<div class="jogo-topo">
+    <p>
+      Data a definir
+    </p>
 
-<span class="tag vermelho">
-PRÓXIMO JOGO
-</span>
-
-</div>
-
-<h3>
-Ceará x Botafogo-SP
-</h3>
-
-<p>
-Data a definir
-</p>
-
-</div>
+  </div>
 
 </section>
 
 <section class="classificacao">
 
-<h2>CLASSIFICAÇÃO</h2>
+  <h2>CLASSIFICAÇÃO</h2>
 
-<table class="tabela">
+  <table class="tabela">
 
-<thead>
+    <thead>
 
-<tr>
+      <tr>
+        <th>#</th>
+        <th>Clube</th>
+        <th>Pts</th>
+        <th>J</th>
+      </tr>
 
-<th>#</th>
+    </thead>
 
-<th>Clube</th>
+    <tbody>
 
-<th>Pts</th>
+      <tr>
+        <td>1</td>
+        <td>Fortaleza</td>
+        <td>13</td>
+        <td>5</td>
+      </tr>
 
-<th>J</th>
+      <tr>
+        <td>2</td>
+        <td>Londrina</td>
+        <td>12</td>
+        <td>5</td>
+      </tr>
 
-</tr>
+      <tr>
+        <td>3</td>
+        <td>Avaí</td>
+        <td>11</td>
+        <td>5</td>
+      </tr>
 
-</thead>
+      <tr class="botafogo">
+        <td>8</td>
+        <td>Botafogo-SP</td>
+        <td>8</td>
+        <td>5</td>
+      </tr>
 
-<tbody>
+    </tbody>
 
-<tr>
-
-<td>1</td>
-
-<td>Fortaleza</td>
-
-<td>13</td>
-
-<td>5</td>
-
-</tr>
-
-<tr>
-
-<td>2</td>
-
-<td>Londrina</td>
-
-<td>12</td>
-
-<td>5</td>
-
-</tr>
-
-<tr>
-
-<td>3</td>
-
-<td>Avaí</td>
-
-<td>11</td>
-
-<td>5</td>
-
-</tr>
-
-<tr class="botafogo">
-
-<td>8</td>
-
-<td>Botafogo-SP</td>
-
-<td>8</td>
-
-<td>5</td>
-
-</tr>
-
-</tbody>
-
-</table>
+  </table>
 
 </section>
 
 <section class="noticias">
 
-<h2>PRINCIPAIS NOTÍCIAS</h2>
+  <h2>PRINCIPAIS NOTÍCIAS</h2>
 
-<div class="noticia">
+  <div class="noticia">
 
-<span class="fonte">
+    <span class="fonte">
+      PORTAL IVAN
+    </span>
 
-PORTAL IVAN
+    <h3>
+      Ivan vive grande fase e é destaque do Botafogo-SP
+    </h3>
 
-</span>
+    <p>
+      O camisa 8, de apenas 17 anos, já marcou sete gols em dez partidas e é um dos principais destaques da Série B.
+    </p>
 
-<h3>
+  </div>
 
-Ivan vive grande fase e é destaque do Botafogo-SP
+</section>
 
-</h3>
+<nav class="menu">
 
-<p>
+  <a href="index.html">
+    🏠
+    <span>Início</span>
+  </a>
 
-Com sete gols em dez jogos, o meia-atacante de 17 anos segue chamando atenção na Série B.
+  <a href="pages/noticias.html">
+    📰
+    <span>Notícias</span>
+  </a>
 
-</p>
+  <a href="pages/serieb.html">
+    🏆
+    <span>Série B</span>
+  </a>
 
-</div>
+  <a href="pages/jogador.html">
+    👤
+    <span>Jogador</span>
+  </a>
 
-</section><nav class="menu">
-
-<a href="index.html">
-
-🏠
-
-<span>Início</span>
-
-</a>
-
-<a href="pages/noticias.html">
-
-📰
-
-<span>Notícias</span>
-
-</a>
-
-<a href="pages/serieb.html">
-
-🏆
-
-<span>Série B</span>
-
-</a>
-
-<a href="pages/jogador.html">
-
-👤
-
-<span>Jogador</span>
-
-</a>
-
-<a href="pages/admin.html">
-
-⚙️
-
-<span>Painel</span>
-
-</a>
+  <a href="pages/admin.html">
+    ⚙️
+    <span>Painel</span>
+  </a>
 
 </nav>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
