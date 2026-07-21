@@ -5,11 +5,15 @@
 }
 
 :root{
-    --vermelho:#b00020;
-    --preto:#111111;
-    --card:#1d1d1d;
+    --vermelho:#c40024;
+    --preto:#0f0f10;
+    --card:#1b1b1d;
     --branco:#ffffff;
-    --cinza:#cfcfcf;
+    --cinza:#bfbfbf;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -21,13 +25,13 @@ body{
 
 .header{
     background:var(--vermelho);
-    padding:20px;
+    padding:22px;
     text-align:center;
 }
 
 .logo h1{
     font-family:'Oswald',sans-serif;
-    font-size:48px;
+    font-size:52px;
     letter-spacing:2px;
 }
 
@@ -37,67 +41,79 @@ body{
 }
 
 .hero{
-    background:linear-gradient(180deg,#b00020,#111111);
-    padding:35px 20px;
+    background:linear-gradient(180deg,#c40024 0%,#2d0009 55%,#0f0f10 100%);
+    padding:40px 20px;
 }
 
 .hero-info{
+    max-width:1200px;
+    margin:auto;
     display:flex;
-    flex-direction:column;
     align-items:center;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
 }
 
 .jogador{
-    width:260px;
+    width:320px;
     max-width:100%;
-    height:auto;
-    margin-bottom:25px;
+    display:block;
 }
 
 .hero-text{
-    text-align:center;
+    max-width:550px;
 }
 
 .categoria{
     display:inline-block;
-    background:#ffffff;
-    color:#b00020;
-    padding:6px 14px;
-    border-radius:20px;
-    font-weight:bold;
-    font-size:12px;
+    background:#fff;
+    color:var(--vermelho);
+    padding:6px 15px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:13px;
     margin-bottom:15px;
 }
 
 .hero-text h2{
     font-family:'Oswald',sans-serif;
-    font-size:72px;
+    font-size:82px;
     line-height:1;
 }
 
 .hero-text h3{
-    margin-top:12px;
-    font-size:28px;
+    margin:15px 0;
+    font-size:30px;
 }
 
 .hero-text p{
-    margin:25px 0;
+    color:#ededed;
     font-size:20px;
     line-height:34px;
 }
 
 .btn{
     display:inline-block;
-    padding:14px 28px;
-    background:#ffffff;
-    color:#b00020;
-    border-radius:12px;
+    margin-top:25px;
+    background:#fff;
+    color:var(--vermelho);
     text-decoration:none;
-    font-weight:700;.stats,
+    padding:15px 30px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}.stats,
 .partidas,
 .classificacao,
 .noticias{
-    padding:25px 20px;
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
 }
 
 .stats h2,
@@ -111,43 +127,46 @@ body{
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
 }
 
 .card{
     background:var(--card);
-    border-radius:16px;
     padding:25px;
+    border-radius:18px;
     text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
 }
 
 .card h3{
-    color:#ff4d4d;
-    font-size:34px;
-    font-weight:700;
+    color:#ff5252;
+    font-size:38px;
 }
 
 .card p{
     margin-top:10px;
-    font-size:18px;
+    color:var(--cinza);
 }
 
 .jogo{
     background:var(--card);
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:15px;
+    padding:22px;
+    border-radius:18px;
+    margin-bottom:18px;
 }
 
 .tag{
     display:inline-block;
     background:#333;
-    color:#fff;
-    padding:6px 12px;
-    border-radius:8px;
+    padding:8px 14px;
+    border-radius:10px;
     font-size:12px;
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 .tag.vermelho{
@@ -155,11 +174,11 @@ body{
 }
 
 .jogo h3{
-    font-size:26px;
-    margin-bottom:8px;
+    font-size:28px;
 }
 
 .jogo p{
+    margin-top:8px;
     color:var(--cinza);
 }
 
@@ -167,70 +186,67 @@ body{
     width:100%;
     border-collapse:collapse;
     background:var(--card);
-    border-radius:16px;
     overflow:hidden;
+    border-radius:18px;
 }
 
 .tabela th{
     background:var(--vermelho);
-    color:#fff;
-    padding:14px;
+    padding:15px;
 }
 
 .tabela td{
-    padding:14px;
-    border-bottom:1px solid #2f2f2f;
+    padding:15px;
     text-align:center;
+    border-bottom:1px solid #2f2f2f;
 }
 
 .botafogo{
-    background:#2b0008;
-    color:#fff;
+    background:#2d0009;
     font-weight:bold;
 }
 
 .noticia{
     background:var(--card);
-    border-radius:16px;
-    padding:20px;
+    padding:22px;
+    border-radius:18px;
 }
 
 .fonte{
-    color:#ff4d4d;
+    color:#ff5252;
     font-weight:bold;
-    display:block;
-    margin-bottom:10px;
 }
 
 .noticia h3{
-    font-size:24px;
-    margin-bottom:12px;
+    margin:12px 0;
+    font-size:28px;
 }
 
 .noticia p{
     color:var(--cinza);
-    line-height:28px;.menu{
+    line-height:30px;
+}.menu{
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
-    height:75px;
     background:#181818;
     border-top:3px solid var(--vermelho);
     display:flex;
     justify-content:space-around;
     align-items:center;
+    padding:14px 0;
     z-index:999;
 }
 
 .menu a{
-    color:#ffffff;
+    color:#fff;
     text-decoration:none;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:4px;
-    font-size:24px;
+    font-size:22px;
 }
 
 .menu span{
@@ -238,22 +254,42 @@ body{
     font-weight:600;
 }
 
-@media (min-width:900px){
+@media(max-width:768px){
 
-.hero-info{
-    flex-direction:row;
-    justify-content:center;
-    gap:50px;
+    .hero-text{
+        text-align:center;
+    }
+
+    .hero-text h2{
+        font-size:56px;
+    }
+
+    .hero-text h3{
+        font-size:22px;
+    }
+
+    .hero-text p{
+        font-size:18px;
+        line-height:30px;
+    }
+
+    .stats h2,
+    .partidas h2,
+    .classificacao h2,
+    .noticias h2{
+        font-size:34px;
+    }
+
 }
 
-.hero-text{
-    text-align:left;
+::-webkit-scrollbar{
+    width:10px;
 }
 
-.grid{
-    grid-template-columns:repeat(4,1fr);
+::-webkit-scrollbar-thumb{
+    background:var(--vermelho);
 }
 
-}
-}
+::-webkit-scrollbar-track{
+    background:#111;
 }
