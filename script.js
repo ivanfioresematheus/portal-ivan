@@ -1,53 +1,34 @@
-const portal = {
-  jogador: {
-    nome: "Ivan",
-    idade: 17,
-    clube: "Botafogo-SP",
-    camisa: 8,
-    posicao: "Meia-atacante",
-    overall: 69,
-    jogos: 10,
-    gols: 7,
-    assistencias: 0,
-    participacoes: 7,
-    valorMercado: "US$ 800.000"
-  },
+async function carregarJogador() {
+  try {
+    const resposta = await fetch("data/jogador.json");
+    const jogador = await resposta.json();
 
-  ultimoJogo: {
-    casa: "Botafogo-SP",
-    golsCasa: 1,
-    visitante: "Ponte Preta",
-    golsVisitante: 1
-  },
+    document.getElementById("jogos").textContent = jogador.jogos;
+    document.getElementById("gols").textContent = jogador.gols;
+    document.getElementById("assistencias").textContent = jogador.assistencias;
+    document.getElementById("valor").textContent =
+      "US$ " + jogador.valorMercado.toLocaleString("pt-BR");
 
-  proximoJogo: {
-    casa: "Ceará",
-    visitante: "Botafogo-SP"
-  }
-};
-
-function atualizarHome() {
-  const jogos = document.getElementById("jogos");
-  const gols = document.getElementById("gols");
-  const assistencias = document.getElementById("assistencias");
-  const valor = document.getElementById("valor");
-
-  if (jogos) jogos.textContent = portal.jogador.jogos;
-  if (gols) gols.textContent = portal.jogador.gols;
-  if (assistencias) assistencias.textContent = portal.jogador.assistencias;
-  if (valor) valor.textContent = portal.jogador.valorMercado;
-
-  const ultimo = document.getElementById("ultimoJogo");
-  if (ultimo) {
-    ultimo.textContent =
-      `${portal.ultimoJogo.casa} ${portal.ultimoJogo.golsCasa} x ${portal.ultimoJogo.golsVisitante} ${portal.ultimoJogo.visitante}`;
-  }
-
-  const proximo = document.getElementById("proximoJogo");
-  if (proximo) {
-    proximo.textContent =
-      `${portal.proximoJogo.casa} x ${portal.proximoJogo.visitante}`;
+  } catch (erro) {
+    console.error("Erro ao carregar jogador:", erro);
   }
 }
 
-document.addEventListener("DOMContentLoaded", atualizarHome);
+async function carregarJogos() {
+  try {
+    const resposta = await fetch("data/jogos.json");
+    const jogos = await resposta.json();
+
+    document.getElementById("ultimoJogo").textContent =
+      `${jogos.ultimoJogo.casa} ${jogos.ultimoJogo.placarCasa} x ${jogos.ultimoJogo.placarVisitante} ${jogos.ultimoJogo.visitante}`;
+
+    document.getElementById("proximoJogo").textContent =
+      `${jogos.proximoJogo.casa} x ${jogos.proximoJogo.visitante}`;
+
+  } catch (erro) {
+    console.error("Erro ao carregar jogos:", erro);
+  }
+}
+
+carregarJogador();
+carregarJogos();
