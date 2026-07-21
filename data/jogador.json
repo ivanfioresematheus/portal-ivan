@@ -1,1 +1,20 @@
-{}
+{
+  "nome": "Ivan",
+  "idade": 17,
+  "clube": "Botafogo-SP",
+  "competicao": "Brasileirão Série B",
+  "camisa": 8,
+  "posicao": "Meia-atacante",
+  "overall": 69,
+  "altura": 1.80,
+  "peso": 75,
+  "pe": "Direito",
+  "naturalidade": "Lajeado - RS",
+  "nacionalidade": "Brasil",
+  "jogos": 10,
+  "gols": 7,
+  "assistencias": 0,
+  "participacoes": 7,
+  "valorMercado": 800000,
+  "titulos": 0
+}
