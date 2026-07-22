@@ -6,6 +6,10 @@ const supabaseClient = supabase.createClient(
   SUPABASE_KEY
 );
 
+// =========================
+// HOME
+// =========================
+
 async function carregarJogador() {
 
   const { data, error } = await supabaseClient
@@ -22,15 +26,25 @@ async function carregarJogador() {
 
   const jogador = data[0];
 
-  document.getElementById("jogos").textContent = jogador.jogos;
-  document.getElementById("gols").textContent = jogador.gols;
-  document.getElementById("assistencias").textContent = jogador.assistencias;
-  document.getElementById("valor").textContent =
-    "US$ " + Number(jogador.valor_mercado).toLocaleString("pt-BR");
+  const jogos = document.getElementById("jogos");
+  const gols = document.getElementById("gols");
+  const assistencias = document.getElementById("assistencias");
+  const valor = document.getElementById("valor");
 
+  if (jogos) jogos.textContent = jogador.jogos;
+  if (gols) gols.textContent = jogador.gols;
+  if (assistencias) assistencias.textContent = jogador.assistencias;
+  if (valor) {
+    valor.textContent =
+      "US$ " + Number(jogador.valor_mercado).toLocaleString("pt-BR");
+  }
 }
 
-carregarJogador();async function salvarJogador() {
+// =========================
+// PAINEL
+// =========================
+
+async function salvarJogador() {
 
   const gols = Number(document.getElementById("golsIvan").value);
   const assistencias = Number(document.getElementById("assistenciasIvan").value);
@@ -47,10 +61,26 @@ carregarJogador();async function salvarJogador() {
     .eq("nome", "Ivan");
 
   if (error) {
-    alert("Erro ao salvar.");
     console.error(error);
+    alert("Erro ao salvar.");
     return;
   }
 
   alert("Jogador atualizado com sucesso!");
+
+  if (document.getElementById("jogos")) {
+    carregarJogador();
+  }
 }
+
+// =========================
+// INICIALIZAÇÃO
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (document.getElementById("jogos")) {
+    carregarJogador();
+  }
+
+});
