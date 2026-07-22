@@ -1,40 +1,33 @@
 const SUPABASE_URL = "https://ywjkuskimdtxymathnxj.supabase.co";
-const SUPABASE_KEY = sb_publishable_VNSgRxU9GBi-XVY_iPZl8g_HoG-UGuz;
+const SUPABASE_KEY = "sb_publishable_VNSgRxU9GBi-XVY_iPZl8g_HoG-UGuz";
 
-const supabase = window.supabase.createClient(
+const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
-);async function carregarJogador() {
-  try {
-    const resposta = await fetch("data/jogador.json");
-    const jogador = await resposta.json();
+);
 
-    document.getElementById("jogos").textContent = jogador.jogos;
-    document.getElementById("gols").textContent = jogador.gols;
-    document.getElementById("assistencias").textContent = jogador.assistencias;
-    document.getElementById("valor").textContent =
-      "US$ " + jogador.valorMercado.toLocaleString("pt-BR");
+async function carregarJogador() {
 
-  } catch (erro) {
-    console.error("Erro ao carregar jogador:", erro);
+  const { data, error } = await supabaseClient
+    .from("jogador")
+    .select("*")
+    .limit(1);
+
+  if (error) {
+    console.error(error);
+    return;
   }
-}
 
-async function carregarJogos() {
-  try {
-    const resposta = await fetch("data/jogos.json");
-    const jogos = await resposta.json();
+  if (!data || data.length === 0) return;
 
-    document.getElementById("ultimoJogo").textContent =
-      `${jogos.ultimoJogo.casa} ${jogos.ultimoJogo.placarCasa} x ${jogos.ultimoJogo.placarVisitante} ${jogos.ultimoJogo.visitante}`;
+  const jogador = data[0];
 
-    document.getElementById("proximoJogo").textContent =
-      `${jogos.proximoJogo.casa} x ${jogos.proximoJogo.visitante}`;
+  document.getElementById("jogos").textContent = jogador.jogos;
+  document.getElementById("gols").textContent = jogador.gols;
+  document.getElementById("assistencias").textContent = jogador.assistencias;
+  document.getElementById("valor").textContent =
+    "US$ " + Number(jogador.valor_mercado).toLocaleString("pt-BR");
 
-  } catch (erro) {
-    console.error("Erro ao carregar jogos:", erro);
-  }
 }
 
 carregarJogador();
-carregarJogos();
