@@ -1,4 +1,5 @@
-console.log("rodada.js carregou");
+alert("VERSÃO NOVA DO RODADA.JS");
+
 console.log("rodada.js carregado");
 // ======================================
 // RODADA.JS
