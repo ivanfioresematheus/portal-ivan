@@ -45,6 +45,8 @@ async function carregarJogador() {
 
 async function salvarJogador() {
 
+  console.log("1 - Entrou na função");
+
   const gols = Number(document.getElementById("golsIvan").value);
   const assistencias = Number(document.getElementById("assistenciasIvan").value);
   const valor = Number(document.getElementById("valorMercado").value);
@@ -65,6 +67,8 @@ async function salvarJogador() {
     return;
   }
 
+  console.log("2 - Jogador atualizado");
+
   carregarJogador();
 
   const rodada = Number(document.getElementById("rodada").value);
@@ -72,6 +76,8 @@ async function salvarJogador() {
   const visitante = document.getElementById("timeVisitante").value;
   const golsCasa = Number(document.getElementById("golsCasa").value);
   const golsVisitante = Number(document.getElementById("golsVisitante").value);
+
+  console.log("3 - Vai inserir partida");
 
   const { error: erroPartida } = await supabaseClient
     .from("partidas")
@@ -87,6 +93,8 @@ async function salvarJogador() {
       finalizado: true
     });
 
+  console.log("4 - Inserção executada");
+
   if (erroPartida) {
 
     console.error(erroPartida);
@@ -99,6 +107,8 @@ async function salvarJogador() {
     return;
 
   }
+
+  console.log("5 - Tudo finalizado");
 
   alert("Jogador e partida atualizados com sucesso!");
 
