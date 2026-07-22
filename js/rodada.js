@@ -124,37 +124,30 @@ async function atualizarJogador(dados) {
 
 async function salvarOutrosJogos(rodada, competicao) {
 
-  const casas = document.querySelectorAll(".casaExtra");
-  const golsCasa = document.querySelectorAll(".golsCasaExtra");
-  const golsVisitante = document.querySelectorAll(".golsVisitanteExtra");
-  const visitantes = document.querySelectorAll(".visitanteExtra");
+    const jogos = obterOutrosJogos();
 
-  for (let i = 0; i < casas.length; i++) {
+    for (const jogo of jogos) {
 
-    const casa = casas[i].value.trim();
-    const visitante = visitantes[i].value.trim();
+        const { error } = await supabaseClient
+            .from("partidas")
+            .insert({
+                rodada: rodada,
+                competicao: competicao,
+                casa: jogo.casa,
+                visitante: jogo.visitante,
+                gols_casa: jogo.golsCasa,
+                gols_visitante: jogo.golsVisitante,
+                gols_ivan: 0,
+                assistencias_ivan: 0,
+                finalizado: true,
+                contabilizada: false
+            });
 
-    if (casa === "" || visitante === "") continue;
+        if (error) {
+            throw error;
+        }
 
-    const { error } = await supabaseClient
-      .from("partidas")
-      .insert({
-        rodada: rodada,
-        competicao: competicao,
-        casa: casa,
-        visitante: visitante,
-        gols_casa: Number(golsCasa[i].value || 0),
-        gols_visitante: Number(golsVisitante[i].value || 0),
-        gols_ivan: 0,
-        assistencias_ivan: 0,
-        finalizado: true,
-        contabilizada: false
-      });
-
-    if (error) {
-      throw error;
     }
-  }
 
 }
 
@@ -188,4 +181,31 @@ async function atualizarUltimoJogo(dados) {
 
   }
 
-});
+});function obterOutrosJogos() {
+
+    const jogos = [];
+
+    const casas = document.querySelectorAll(".casaExtra");
+    const golsCasa = document.querySelectorAll(".golsCasaExtra");
+    const golsVisitante = document.querySelectorAll(".golsVisitanteExtra");
+    const visitantes = document.querySelectorAll(".visitanteExtra");
+
+    for (let i = 0; i < casas.length; i++) {
+
+        const casa = casas[i].value.trim();
+        const visitante = visitantes[i].value.trim();
+
+        if (!casa || !visitante) continue;
+
+        jogos.push({
+            casa,
+            visitante,
+            golsCasa: Number(golsCasa[i].value || 0),
+            golsVisitante: Number(golsVisitante[i].value || 0)
+        });
+
+    }
+
+    return jogos;
+
+}
