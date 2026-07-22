@@ -292,4 +292,28 @@ body{
 
 ::-webkit-scrollbar-track{
     background:#111;
+}.jogo-extra{
+    display:grid;
+    grid-template-columns:2fr 70px 40px 70px 2fr;
+    gap:10px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.jogo-extra span{
+    text-align:center;
+    font-weight:bold;
+    font-size:18px;
+}
+
+@media(max-width:768px){
+
+    .jogo-extra{
+        grid-template-columns:1fr;
+    }
+
+    .jogo-extra span{
+        display:none;
+    }
+
 }
