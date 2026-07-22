@@ -167,3 +167,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+// ===============================
+// ADICIONAR JOGOS DA RODADA
+// ===============================
+
+function adicionarJogo() {
+
+    const lista = document.getElementById("listaJogos");
+
+    if (!lista) return;
+
+    const jogo = document.createElement("div");
+
+    jogo.className = "jogo-extra";
+
+    jogo.innerHTML = `
+        <input type="text" placeholder="Time da Casa" class="casaExtra">
+
+        <input type="number" placeholder="0" class="golsCasaExtra">
+
+        <span>X</span>
+
+        <input type="number" placeholder="0" class="golsVisitanteExtra">
+
+        <input type="text" placeholder="Time Visitante" class="visitanteExtra">
+
+        <br><br>
+    `;
+
+    lista.appendChild(jogo);
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const botao = document.getElementById("adicionarJogo");
+
+    if (botao) {
+        botao.addEventListener("click", adicionarJogo);
+    }
+
+});
