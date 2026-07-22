@@ -178,4 +178,14 @@ async function atualizarUltimoJogo(dados) {
     throw error;
   }
 
-}
+}document.addEventListener("DOMContentLoaded", () => {
+
+  const botao = document.getElementById("salvarRodada");
+
+  if (botao) {
+
+    botao.addEventListener("click", salvarRodada);
+
+  }
+
+});
