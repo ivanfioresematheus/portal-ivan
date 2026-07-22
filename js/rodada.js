@@ -208,4 +208,52 @@ async function atualizarUltimoJogo(dados) {
 
     return jogos;
 
+}// ======================================
+// ADICIONAR OUTRO JOGO
+// ======================================
+
+function adicionarJogo() {
+
+    const lista = document.getElementById("listaJogos");
+
+    const novoJogo = document.createElement("div");
+
+    novoJogo.className = "jogo-extra";
+
+    novoJogo.innerHTML = `
+        <input type="text" placeholder="Time da Casa" class="casaExtra">
+
+        <input type="number" placeholder="0" class="golsCasaExtra">
+
+        <span>X</span>
+
+        <input type="number" placeholder="0" class="golsVisitanteExtra">
+
+        <input type="text" placeholder="Time Visitante" class="visitanteExtra">
+
+        <br><br>
+    `;
+
+    lista.appendChild(novoJogo);
+
 }
+
+// ======================================
+// INICIALIZAÇÃO
+// ======================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const botaoAdicionar = document.getElementById("adicionarJogo");
+
+    if (botaoAdicionar) {
+        botaoAdicionar.addEventListener("click", adicionarJogo);
+    }
+
+    const botaoSalvar = document.getElementById("salvarRodada");
+
+    if (botaoSalvar) {
+        botaoSalvar.addEventListener("click", salvarRodada);
+    }
+
+});
