@@ -30,4 +30,27 @@ async function carregarJogador() {
 
 }
 
-carregarJogador();
+carregarJogador();async function salvarJogador() {
+
+  const gols = Number(document.getElementById("golsIvan").value);
+  const assistencias = Number(document.getElementById("assistenciasIvan").value);
+  const valor = Number(document.getElementById("valorMercado").value);
+
+  const { error } = await supabaseClient
+    .from("jogador")
+    .update({
+      gols: gols,
+      assistencias: assistencias,
+      participacoes: gols + assistencias,
+      valor_mercado: valor
+    })
+    .eq("nome", "Ivan");
+
+  if (error) {
+    alert("Erro ao salvar.");
+    console.error(error);
+    return;
+  }
+
+  alert("Jogador atualizado com sucesso!");
+}
