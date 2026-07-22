@@ -1,3 +1,4 @@
+console.log("rodada.js carregou");
 console.log("rodada.js carregado");
 // ======================================
 // RODADA.JS
@@ -241,7 +242,7 @@ function adicionarJogo() {
 // ======================================
 // INICIALIZAÇÃO
 // ======================================
-
+console.log("chegou no final do arquivo");
 document.addEventListener("DOMContentLoaded", () => {
 
     const botaoAdicionar = document.getElementById("adicionarJogo");
