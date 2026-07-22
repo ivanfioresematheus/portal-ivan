@@ -36,7 +36,6 @@ async function carregarJogador() {
     valor.textContent =
       "US$ " + Number(data.valor_mercado).toLocaleString("pt-BR");
   }
-
 }
 
 // ===============================
@@ -45,13 +44,20 @@ async function carregarJogador() {
 
 async function salvarJogador() {
 
-  console.log("1 - Entrou na função");
+  const gols = Number(document.getElementById("golsIvan").value || 0);
+  const assistencias = Number(document.getElementById("assistenciasIvan").value || 0);
+  const valor = Number(document.getElementById("valorMercado").value || 0);
 
-  const gols = Number(document.getElementById("golsIvan").value);
-  const assistencias = Number(document.getElementById("assistenciasIvan").value);
-  const valor = Number(document.getElementById("valorMercado").value);
+  const rodada = Number(document.getElementById("rodada").value || 0);
 
-  const { error } = await supabaseClient
+  const casa = document.getElementById("timeCasa").value.trim();
+  const visitante = document.getElementById("timeVisitante").value.trim();
+
+  const golsCasa = Number(document.getElementById("golsCasa").value || 0);
+  const golsVisitante = Number(document.getElementById("golsVisitante").value || 0);
+
+  // Atualiza o jogador
+  const { error: erroJogador } = await supabaseClient
     .from("jogador")
     .update({
       gols: gols,
@@ -61,24 +67,13 @@ async function salvarJogador() {
     })
     .eq("id", 1);
 
-  if (error) {
-    console.error(error);
-    alert("Erro ao salvar jogador.");
+  if (erroJogador) {
+    console.error(erroJogador);
+    alert("Erro ao atualizar o jogador.");
     return;
   }
 
-  console.log("2 - Jogador atualizado");
-
-  carregarJogador();
-
-  const rodada = Number(document.getElementById("rodada").value);
-  const casa = document.getElementById("timeCasa").value;
-  const visitante = document.getElementById("timeVisitante").value;
-  const golsCasa = Number(document.getElementById("golsCasa").value);
-  const golsVisitante = Number(document.getElementById("golsVisitante").value);
-
-  console.log("3 - Vai inserir partida");
-
+  // Registra a partida
   const { error: erroPartida } = await supabaseClient
     .from("partidas")
     .insert({
@@ -93,25 +88,26 @@ async function salvarJogador() {
       finalizado: true
     });
 
-  console.log("4 - Inserção executada");
-
   if (erroPartida) {
-
     console.error(erroPartida);
-
-    alert(
-      "Erro ao registrar a partida:\n\n" +
-      JSON.stringify(erroPartida)
-    );
-
+    alert("Erro ao registrar a partida.");
     return;
-
   }
 
-  console.log("5 - Tudo finalizado");
+  // Se for jogo do Botafogo-SP, atualiza a configuração
+  if (casa === "Botafogo-SP" || visitante === "Botafogo-SP") {
 
-  alert("Jogador e partida atualizados com sucesso!");
+    const descricao = `${casa} ${golsCasa} x ${golsVisitante} ${visitante}`;
 
+    await supabaseClient
+      .from("configuracao")
+      .update({ valor: descricao })
+      .eq("chave", "ultimo_jogo");
+  }
+
+  carregarJogador();
+
+  alert("Rodada salva com sucesso!");
 }
 
 // ===============================
@@ -119,9 +115,7 @@ async function salvarJogador() {
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
-
   if (document.getElementById("jogos")) {
     carregarJogador();
   }
-
 });
