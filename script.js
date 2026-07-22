@@ -67,7 +67,33 @@ async function salvarJogador() {
 
   alert("Jogador atualizado com sucesso!");
 
-  carregarJogador();
+  carregarJogador(const rodada = Number(document.getElementById("rodada").value);
+const casa = document.getElementById("timeCasa").value;
+const visitante = document.getElementById("timeVisitante").value;
+const golsCasa = Number(document.getElementById("golsCasa").value);
+const golsVisitante = Number(document.getElementById("golsVisitante").value);
+
+const { error: erroPartida } = await supabaseClient
+  .from("partidas")
+  .insert({
+    rodada: rodada,
+    competicao: "Brasileirão Série B",
+    casa: casa,
+    visitante: visitante,
+    gols_casa: golsCasa,
+    gols_visitante: golsVisitante,
+    gols_ivan: gols,
+    assistencias_ivan: assistencias,
+    finalizado: true
+  });
+
+if (erroPartida) {
+  console.error(erroPartida);
+  alert("Jogador atualizado, mas houve erro ao registrar a partida.");
+  return;
+}
+
+alert("Partida registrada com sucesso!"););
 
 }
 
