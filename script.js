@@ -1,4 +1,10 @@
-async function carregarJogador() {
+const SUPABASE_URL = "https://ywjkuskimdtxymathnxj.supabase.co";
+const SUPABASE_KEY = sb_publishable_VNSgRxU9GBi-XVY_iPZl8g_HoG-UGuz;
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);async function carregarJogador() {
   try {
     const resposta = await fetch("data/jogador.json");
     const jogador = await resposta.json();
