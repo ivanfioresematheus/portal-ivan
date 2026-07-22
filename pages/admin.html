@@ -1,89 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel | Portal Ivan</title>
 
-  <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Painel | Portal Ivan</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header class="header">
-  <div class="logo">
-    <h1>PAINEL</h1>
-    <p>Atualização do Portal Ivan</p>
-  </div>
+
+<div class="logo">
+<h1>PAINEL</h1>
+<p>Atualização do Portal Ivan</p>
+</div>
+
 </header>
 
 <section class="stats">
 
-  <h2>RODADA</h2>
+<h2>RODADA</h2>
 
-  <div class="card">
+<div class="card">
 
-    <label>Rodada</label>
-    <input type="number" id="rodada" value="1">
+<label>Rodada</label>
+<input type="number" id="rodada" value="1">
 
-    <label>Competição</label>
-    <input type="text" id="competicao" value="Brasileirão Série B">
+<label>Competição</label>
+<input type="text" id="competicao" value="Brasileirão Série B">
 
-  </div>
+</div>
 
-  <h2 style="margin-top:30px;">RESULTADO DO BOTAFOGO-SP</h2>
+<h2 style="margin-top:30px;">RESULTADO DO BOTAFOGO-SP</h2>
 
-  <div class="card">
+<div class="card">
 
-    <label>Time da Casa</label>
-    <input type="text" id="timeCasa" value="Botafogo-SP">
+<label>Time da Casa</label>
+<input type="text" id="timeCasa" value="Botafogo-SP">
 
-    <label>Gols da Casa</label>
-    <input type="number" id="golsCasa">
+<label>Gols da Casa</label>
+<input type="number" id="golsCasa">
 
-    <label>Time Visitante</label>
-    <input type="text" id="timeVisitante">
+<label>Time Visitante</label>
+<input type="text" id="timeVisitante">
 
-    <label>Gols do Visitante</label>
-    <input type="number" id="golsVisitante">
+<label>Gols do Visitante</label>
+<input type="number" id="golsVisitante">
 
-  </div>
+</div>
 
-  <h2 style="margin-top:30px;">IVAN</h2>
+<h2 style="margin-top:30px;">IVAN</h2>
 
-  <div class="card">
+<div class="card">
 
-    <label>Gols</label>
-    <input type="number" id="golsIvan">
+<label>Gols</label>
+<input type="number" id="golsIvan">
 
-    <label>Assistências</label>
-    <input type="number" id="assistenciasIvan">
+<label>Assistências</label>
+<input type="number" id="assistenciasIvan">
 
-    <label>Valor de Mercado</label>
-    <input type="number" id="valorMercado" value="800000">
+<label>Valor de Mercado</label>
+<input type="number" id="valorMercado" value="800000">
 
-  </div>
+</div>
 
-  <h2 style="margin-top:30px;">PRÓXIMO JOGO</h2>
+<h2 style="margin-top:30px;">PRÓXIMO JOGO</h2>
 
-  <div class="card">
+<div class="card">
 
-    <label>Adversário</label>
-    <input type="text" id="proximoAdversario">
+<label>Adversário</label>
+<input type="text" id="proximoAdversario">
 
-    <label>Data</label>
-    <input type="date" id="dataJogo">
+<label>Data</label>
+<input type="date" id="dataJogo">
 
-  </div>
+</div>
 
-  <button class="btn">
-    SALVAR
-  </button>
+<button class="btn" onclick="salvarJogador()">
+SALVAR
+</button>
 
 </section>
 
@@ -116,7 +122,9 @@
 
 </nav>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../script.js"></script>
 
 </body>
+
 </html>
