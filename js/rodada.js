@@ -18,10 +18,23 @@ async function salvarRodada() {
 
     await salvarOutrosJogos(dados.rodada, dados.competicao);
 
-    await atualizarUltimoJogo(dados);
+ await atualizarUltimoJogo(dados);
 
-    alert("Rodada salva com sucesso!");
+// Atualiza a classificação do jogo do Botafogo-SP
 
+await atualizarTime(
+    dados.casa,
+    dados.golsCasa,
+    dados.golsVisitante
+);
+
+await atualizarTime(
+    dados.visitante,
+    dados.golsVisitante,
+    dados.golsCasa
+);
+
+alert("Rodada salva com sucesso!");
   } catch (erro) {
 
     console.error(erro);
