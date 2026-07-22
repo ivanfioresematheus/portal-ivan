@@ -66,7 +66,7 @@ async function salvarJogador() {
     .select("*")
     .eq("id", 1)
     .single();
-
+console.log("Jogador atual:", jogadorAtual);
   if (erroBusca) {
     console.error(erroBusca);
     alert("Erro ao buscar os dados do jogador.");
@@ -81,7 +81,12 @@ async function salvarJogador() {
   const novosGols = jogadorAtual.gols + golsPartida;
   const novasAssistencias = jogadorAtual.assistencias + assistenciasPartida;
   const novasParticipacoes = novosGols + novasAssistencias;
-
+console.log({
+  novosJogos,
+  novosGols,
+  novasAssistencias,
+  novasParticipacoes
+});
   // ===============================
   // ATUALIZA A CARREIRA
   // ===============================
