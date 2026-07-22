@@ -36,6 +36,7 @@ async function carregarJogador() {
     valor.textContent =
       "US$ " + Number(data.valor_mercado).toLocaleString("pt-BR");
   }
+
 }
 
 // ===============================
@@ -44,9 +45,9 @@ async function carregarJogador() {
 
 async function salvarJogador() {
 
-  const gols = Number(document.getElementById("golsIvan").value || 0);
-  const assistencias = Number(document.getElementById("assistenciasIvan").value || 0);
-  const valor = Number(document.getElementById("valorMercado").value || 0);
+  const golsPartida = Number(document.getElementById("golsIvan").value || 0);
+  const assistenciasPartida = Number(document.getElementById("assistenciasIvan").value || 0);
+  const valorMercado = Number(document.getElementById("valorMercado").value || 0);
 
   const rodada = Number(document.getElementById("rodada").value || 0);
 
@@ -56,14 +57,43 @@ async function salvarJogador() {
   const golsCasa = Number(document.getElementById("golsCasa").value || 0);
   const golsVisitante = Number(document.getElementById("golsVisitante").value || 0);
 
-  // Atualiza o jogador
+  // ===============================
+  // BUSCA A CARREIRA ATUAL
+  // ===============================
+
+  const { data: jogadorAtual, error: erroBusca } = await supabaseClient
+    .from("jogador")
+    .select("*")
+    .eq("id", 1)
+    .single();
+
+  if (erroBusca) {
+    console.error(erroBusca);
+    alert("Erro ao buscar os dados do jogador.");
+    return;
+  }
+
+  // ===============================
+  // CALCULA OS NOVOS TOTAIS
+  // ===============================
+
+  const novosJogos = jogadorAtual.jogos + 1;
+  const novosGols = jogadorAtual.gols + golsPartida;
+  const novasAssistencias = jogadorAtual.assistencias + assistenciasPartida;
+  const novasParticipacoes = novosGols + novasAssistencias;
+
+  // ===============================
+  // ATUALIZA A CARREIRA
+  // ===============================
+
   const { error: erroJogador } = await supabaseClient
     .from("jogador")
     .update({
-      gols: gols,
-      assistencias: assistencias,
-      participacoes: gols + assistencias,
-      valor_mercado: valor
+      jogos: novosJogos,
+      gols: novosGols,
+      assistencias: novasAssistencias,
+      participacoes: novasParticipacoes,
+      valor_mercado: valorMercado
     })
     .eq("id", 1);
 
@@ -73,7 +103,10 @@ async function salvarJogador() {
     return;
   }
 
-  // Registra a partida
+  // ===============================
+  // REGISTRA A PARTIDA
+  // ===============================
+
   const { error: erroPartida } = await supabaseClient
     .from("partidas")
     .insert({
@@ -83,8 +116,8 @@ async function salvarJogador() {
       visitante: visitante,
       gols_casa: golsCasa,
       gols_visitante: golsVisitante,
-      gols_ivan: gols,
-      assistencias_ivan: assistencias,
+      gols_ivan: golsPartida,
+      assistencias_ivan: assistenciasPartida,
       finalizado: true
     });
 
@@ -94,20 +127,28 @@ async function salvarJogador() {
     return;
   }
 
-  // Se for jogo do Botafogo-SP, atualiza a configuração
+  // ===============================
+  // ATUALIZA O ÚLTIMO JOGO
+  // ===============================
+
   if (casa === "Botafogo-SP" || visitante === "Botafogo-SP") {
 
-    const descricao = `${casa} ${golsCasa} x ${golsVisitante} ${visitante}`;
+    const descricao =
+      `${casa} ${golsCasa} x ${golsVisitante} ${visitante}`;
 
     await supabaseClient
       .from("configuracao")
-      .update({ valor: descricao })
+      .update({
+        valor: descricao
+      })
       .eq("chave", "ultimo_jogo");
+
   }
 
   carregarJogador();
 
   alert("Rodada salva com sucesso!");
+
 }
 
 // ===============================
@@ -115,7 +156,9 @@ async function salvarJogador() {
 // ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
+
   if (document.getElementById("jogos")) {
     carregarJogador();
   }
+
 });
