@@ -6,43 +6,42 @@ const supabaseClient = supabase.createClient(
   SUPABASE_KEY
 );
 
-// =========================
+// ===============================
 // HOME
-// =========================
+// ===============================
 
 async function carregarJogador() {
 
   const { data, error } = await supabaseClient
     .from("jogador")
     .select("*")
-    .limit(1);
+    .eq("id", 1)
+    .single();
 
   if (error) {
     console.error(error);
     return;
   }
 
-  if (!data || data.length === 0) return;
-
-  const jogador = data[0];
-
   const jogos = document.getElementById("jogos");
   const gols = document.getElementById("gols");
   const assistencias = document.getElementById("assistencias");
   const valor = document.getElementById("valor");
 
-  if (jogos) jogos.textContent = jogador.jogos;
-  if (gols) gols.textContent = jogador.gols;
-  if (assistencias) assistencias.textContent = jogador.assistencias;
+  if (jogos) jogos.textContent = data.jogos;
+  if (gols) gols.textContent = data.gols;
+  if (assistencias) assistencias.textContent = data.assistencias;
+
   if (valor) {
     valor.textContent =
-      "US$ " + Number(jogador.valor_mercado).toLocaleString("pt-BR");
+      "US$ " + Number(data.valor_mercado).toLocaleString("pt-BR");
   }
+
 }
 
-// =========================
+// ===============================
 // PAINEL
-// =========================
+// ===============================
 
 async function salvarJogador() {
 
@@ -58,7 +57,7 @@ async function salvarJogador() {
       participacoes: gols + assistencias,
       valor_mercado: valor
     })
-    .eq("nome", "Ivan");
+    .eq("id", 1);
 
   if (error) {
     console.error(error);
@@ -68,14 +67,13 @@ async function salvarJogador() {
 
   alert("Jogador atualizado com sucesso!");
 
-  if (document.getElementById("jogos")) {
-    carregarJogador();
-  }
+  carregarJogador();
+
 }
 
-// =========================
+// ===============================
 // INICIALIZAÇÃO
-// =========================
+// ===============================
 
 document.addEventListener("DOMContentLoaded", () => {
 
