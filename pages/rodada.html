@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<title>Rodada</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodada | Portal Ivan</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
 
-<h1>Rodada</h1>
+<header class="header">
+  <div class="logo">
+    <h1>RODADA</h1>
+    <p>Atualização da Série B</p>
+  </div>
+</header>
+
+<section class="stats">
+
+<h2>JOGO DO BOTAFOGO-SP</h2>
+
+<div class="card">
+
+<label>Rodada</label>
+<input type="number" id="rodada" value="10">
+
+<label>Casa</label>
+<input type="text" id="casa" value="Botafogo-SP">
+
+<label>Gols Casa</label>
+<input type="number" id="golsCasa">
+
+<label>Visitante</label>
+<input type="text" id="visitante">
+
+<label>Gols Visitante</label>
+<input type="number" id="golsVisitante">
+
+<label>Gols do Ivan</label>
+<input type="number" id="golsIvan">
+
+<label>Assistências do Ivan</label>
+<input type="number" id="assistenciasIvan">
+
+</div>
+
+<h2 style="margin-top:30px;">OUTROS JOGOS</h2>
+
+<div id="listaJogos" class="card">
+
+<p>Os outros jogos da rodada aparecerão aqui nas próximas etapas.</p>
+
+</div>
+
+<button class="btn" id="salvarRodada">
+SALVAR RODADA
+</button>
+
+</section>
+
+<script src="../script.js"></script>
 
 </body>
 </html>
