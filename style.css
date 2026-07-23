@@ -46,13 +46,11 @@ body{
 }
 
 .hero-info{
-    max-width:1200px;
-    margin:auto;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
+    text-align:center;
 }
 
 .jogador{
@@ -73,7 +71,8 @@ body{
 
 }
 .hero-text{
-    max-width:550px;
+    max-width:700px;
+    text-align:center;
 }
 
 .categoria{
