@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Temporada | Portal Ivan</title>
 
-  <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova Temporada | Portal Ivan</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 
 <body>
 
 <header class="header">
-  <div class="logo">
-    <h1>NOVA TEMPORADA</h1>
-    <p>Portal Ivan</p>
-  </div>
+
+<div class="logo">
+
+<h1>NOVA TEMPORADA</h1>
+
+<p>Portal Ivan</p>
+
+</div>
+
 </header>
 
 <main class="stats">
 
-<h2>Em construção</h2>
+<div class="card">
 
-<p>Aqui será iniciado um novo ano da carreira.</p>
+<label>Temporada</label>
+
+<input
+type="number"
+id="temporada"
+value="2021"
+>
+
+<label>Clube</label>
+
+<input
+type="text"
+id="clube"
+placeholder="Ex.: Barcelona"
+>
+
+<label>Competição</label>
+
+<input
+type="text"
+id="competicao"
+placeholder="Ex.: La Liga"
+>
+
+<button
+class="btn"
+id="iniciarTemporada"
+>
+
+INICIAR TEMPORADA
+
+</button>
+
+</div>
 
 </main>
+
+<script src="../js/supabase.js"></script>
+<script src="../js/temporada.js"></script>
 
 </body>
 </html>
