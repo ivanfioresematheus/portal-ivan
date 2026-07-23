@@ -1,56 +1,38 @@
-// ======================================
-// CLASSIFICAÇÃO
-// ======================================
+async function carregarClassificacao() {
 
-async function atualizarTime(nomeTime, golsPro, golsContra) {
-
-    const { data: time, error } = await supabaseClient
+    const { data, error } = await supabaseClient
         .from("classificacao")
         .select("*")
-        .eq("clube", nomeTime)
-        .single();
+        .order("pontos", { ascending: false })
+        .order("saldo", { ascending: false })
+        .order("gols_pro", { ascending: false });
 
-    if (error || !time) {
+    if (error) {
         console.error(error);
         return;
     }
 
-    let pontos = time.pontos;
-    let vitorias = time.vitorias;
-    let empates = time.empates;
-    let derrotas = time.derrotas;
+    const tabela = document.getElementById("corpoTabela");
 
-    if (golsPro > golsContra) {
-        pontos += 3;
-        vitorias += 1;
-    } else if (golsPro === golsContra) {
-        pontos += 1;
-        empates += 1;
-    } else {
-        derrotas += 1;
-    }
+    if (!tabela) return;
 
-    const jogos = time.jogos + 1;
-    const gols_pro = time.gols_pro + golsPro;
-    const gols_contra = time.gols_contra + golsContra;
-    const saldo = gols_pro - gols_contra;
+    tabela.innerHTML = "";
 
-    const { error: updateError } = await supabaseClient
-        .from("classificacao")
-        .update({
-            pontos,
-            jogos,
-            vitorias,
-            empates,
-            derrotas,
-            gols_pro,
-            gols_contra,
-            saldo
-        })
-        .eq("clube", nomeTime);
+    data.forEach((time, indice) => {
 
-    if (updateError) {
-        console.error(updateError);
-    }
+        tabela.innerHTML += `
+            <tr ${time.clube === "Botafogo-SP" ? 'class="botafogo"' : ""}>
+                <td>${indice + 1}</td>
+                <td>${time.clube}</td>
+                <td>${time.pontos}</td>
+                <td>${time.jogos}</td>
+                <td>${time.vitorias}</td>
+                <td>${time.empates}</td>
+                <td>${time.derrotas}</td>
+                <td>${time.saldo}</td>
+            </tr>
+        `;
+
+    });
 
 }
